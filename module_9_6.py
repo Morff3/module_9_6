@@ -1,15 +1,14 @@
-import itertools
-
 def all_variants(text):
-    lis = []
-    for lst in range(1, len(text) + 1):
-        lis.append(list(itertools.combinations(text, lst)))
-    for i in lis:
-        for j in i:
-            if ''.join(j) != 'ac':
-                yield ''.join(j)
+    i = 0
+    while i != len(text):
+        yield text[i]
+        i += 1
+    yield text[0] + text[1]
+    yield text[1] + text[2]
+    yield text[0] + text[1] + text[2]
 
 
 a = all_variants("abc")
+
 for i in a:
     print(i)
